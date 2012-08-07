@@ -39,6 +39,8 @@ gem 'rspec-rails', :group => [:test, :development]
 
 gem 'puma'
 
+gem 'kaminari'
+gem 'cells'
 # Deploy with Capistrano
 # gem 'capistrano'
 

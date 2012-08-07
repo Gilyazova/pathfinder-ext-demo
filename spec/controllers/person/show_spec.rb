@@ -22,7 +22,7 @@ describe PersonsController do
       end
     end
 
-    describe 'person exists and request json xml' do
+    describe 'person exists and request xml format' do
       before do
         @person = FactoryGirl.create(:person)
         get :show, id: @person.id, :format => :xml
@@ -31,6 +31,17 @@ describe PersonsController do
       it 'should return person xml' do
         response.status.should == 200
         assigns(:person).should_not be_nil
+      end
+    end
+
+    describe 'person exists and request html format' do
+      before do
+        @person = FactoryGirl.create(:person)
+        get :show, id: @person.id
+      end
+
+      it 'should return person xml' do
+        response.status.should == 406
       end
     end
 
