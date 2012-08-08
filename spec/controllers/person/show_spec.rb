@@ -10,17 +10,17 @@ describe PersonsController do
       end
     end
 
-    describe 'person exists and request json format' do
-      before do
-        @person = FactoryGirl.create(:person)
-        get :show, id: @person.id, :format => :json
-      end
+    # describe 'person exists and request json format' do
+    #   before do
+    #     @person = FactoryGirl.create(:person)
+    #     get :show, id: @person.id, :format => :json
+    #   end
 
-      it 'should return person json' do
-        response.status.should == 200
-        assigns(:person).should_not be_nil
-      end
-    end
+    #   it 'should return person json' do
+    #     response.status.should == 200
+    #     assigns(:person).should_not be_nil
+    #   end
+    # end
 
     describe 'person exists and request xml format' do
       before do

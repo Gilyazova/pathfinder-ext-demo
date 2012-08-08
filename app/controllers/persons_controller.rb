@@ -3,7 +3,6 @@ class PersonsController < ApplicationController
 
   def index
     @persons = PersonFinder::ByIdentityCard.new.find(params)
-
     respond_to do |format|
       format.xml { render }
       # format.json { render :json => @person }
