@@ -6,7 +6,7 @@
     <total_objects><%= @identity_cards.total_count %></total_objects>
   </pages>
   <% @identity_cards.each do |ic| -%>
-    <% #render_cell :person, :show, :person => p %>
-  <identity_card></identity_card>
+    <% #render :partial => "form", :locals => { :zone => @zone } %>
+    <%= render_cell ic.extended_by.class.name.underscore, :show, ic, ic.extended_by %>
   <% end -%>
 </identity_cards>

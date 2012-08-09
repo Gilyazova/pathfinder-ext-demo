@@ -1,18 +1,17 @@
 class PersonsController < ApplicationController
   before_filter :find_person, :only => [:show]
+  before_filter :fetch_find_params, :only => [:index]
 
   def index
-    @persons = PersonFinder::ByIdentityCard.new.find(params)
+    @persons = PersonFinderBy::IdentityCard.new.find(@find_parameters)
     respond_to do |format|
       format.xml { render }
-      # format.json { render :json => @person }
     end
   end
 
   def show
     respond_to do |format|
       format.xml { render }
-      # format.json { render json: {:id => 5} }
     end
   end
 
@@ -23,4 +22,12 @@ class PersonsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     head(404)
   end
+
+  def fetch_find_params
+    @find_parameters = PersonFinderBy::IdentityCardParams.new(params)
+
+    head(404) unless @find_parameters.valid?
+  end
+
+
 end

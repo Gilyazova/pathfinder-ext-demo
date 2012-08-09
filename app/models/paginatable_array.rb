@@ -1,4 +1,4 @@
-class FakePaginatableArray < Array
+class PaginatableArray < Array
   def initialize(original_array = [], options = {})
     @_original_array = original_array
     @_current_page = options[:current_page]
@@ -21,9 +21,5 @@ class FakePaginatableArray < Array
   def current_page
     return @_current_page unless @_current_page.nil?
     1
-  end  
-
-  def self.paginate_array(array, options = {})
-    FakePaginatableArray.new array, options
   end
 end
