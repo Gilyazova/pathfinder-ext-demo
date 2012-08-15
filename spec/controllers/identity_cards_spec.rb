@@ -11,30 +11,21 @@ describe IdentityCardsController do
       end
     end
 
-
     describe 'person exist case' do
       before do
 
-        @person = Person.create
-        rnd = Random.new(123456)
-
+        person = FactoryGirl.create(:person)
         3.times do |i|
-          passport = RussianPassport.new(first_name: "Петр#{i}",
-              last_name: "Петров#{i}",
-              middle_name: "Петрович",
-              birth_date: DateTime.new(rnd.rand(1950..1996), rnd.rand(11) + 1, rnd.rand(27) + 1))
-
-          passport.build_identity_card(person: @person)
-          passport.save
-
-          get :index, person_id: @person.id, :format => :xml  
+          FactoryGirl.create(:russian_passport, :person => person)
         end
+
+        get :index, person_id: person.id, :format => :xml
       end
 
       its(:status) { should == 200}
 
       it 'assigns identity cards' do
-        p assigns(:identity_cards).first
+        # p assigns(:identity_cards).first
         assigns(:identity_cards).count.should == 3#should_not be_nil
       end
 

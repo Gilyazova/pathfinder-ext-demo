@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe FakePaginatableArray do
+describe PaginatableArray do
   describe 'simple init' do
     before do
-      @arr = FakePaginatableArray.paginate_array([1,2,3,4,5,6])
+      @arr = PaginatableArray.new([1,2,3,4,5,6])
     end
 
     subject { @arr }
@@ -21,7 +21,7 @@ describe FakePaginatableArray do
         current_page: 12,
         total_count: 800
       }
-      @arr = FakePaginatableArray.paginate_array([1,2,3,4,5,6], options)
+      @arr = PaginatableArray.new([1,2,3,4,5,6], options)
     end
 
     subject { @arr }
