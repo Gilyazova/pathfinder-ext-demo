@@ -36,5 +36,21 @@ describe IdentityCardsController do
       end
     end
 
+    # describe 'and return right data' do
+    #   before do 
+    #     person = FactoryGirl.create(:person)
+    #     rp = FactoryGirl.create(:russian_passport, :person => person)
+    #     rp.identity_card.number = '111111'
+    #     rp.identity_card.serie = '222222'
+    #     # rp.identity_card.number = '111111'
+
+    #     get :index, person_id: person.id, :format => :xml
+    #   end
+
+    #   it '' do
+    #     response.status.should == 200
+    #   end
+    # end
+
   end
 end

@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(:version => 20120807120324) do
   create_table "identity_cards", :force => true do |t|
     t.integer  "extended_by_id"
     t.string   "extended_by_type"
+    t.string   "serie"
+    t.string   "number"
+    t.datetime "issue_date"
+    t.string   "issuer_code"
+    t.string   "issuer"
+    t.string   "issue_place_code"
+    t.integer  "type_id"
+    t.integer  "reason_id"
+    t.integer  "state_id"
+    t.datetime "loss_date"
+    t.datetime "start_date"
+    t.datetime "finish_date"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "person_id"
@@ -42,8 +54,10 @@ ActiveRecord::Schema.define(:version => 20120807120324) do
     t.string   "last_name"
     t.string   "middle_name"
     t.datetime "birth_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "birth_place_code"
+    t.integer  "sex_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end

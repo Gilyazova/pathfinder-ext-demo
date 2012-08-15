@@ -1,7 +1,7 @@
 class RussianPassport < ActiveRecord::Base
   has_one :identity_card, :as => :extended_by, :dependent => :destroy
 
-  attr_accessible :first_name, :last_name, :middle_name, :birth_date, :sex
+  attr_accessible :first_name, :last_name, :middle_name, :birth_date, :sex_id, :birth_place_code
 
   delegate :person=, :to => :identity_card
   delegate :person, :to => :identity_card
