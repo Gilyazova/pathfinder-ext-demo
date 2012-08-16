@@ -29,7 +29,7 @@ describe "identity_cards/index.xml.erb" do
 
 
     rp.identity_card.save
-    @identity_cards = PaginatableArray.new(person.identity_cards)
+    @identity_cards = PaginableArray.new(person.identity_cards)
     @xml = Nokogiri::XML.parse(render)
   end
 

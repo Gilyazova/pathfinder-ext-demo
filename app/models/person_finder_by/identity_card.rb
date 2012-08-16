@@ -25,7 +25,7 @@ module PersonFinderBy
       }
 
       persons = Person.find(results.pluck('identity_cards.person_id'))
-      PaginatableArray.new(persons, pages_info)
+      PaginableArray.new(persons, pages_info)
     end
 
   end

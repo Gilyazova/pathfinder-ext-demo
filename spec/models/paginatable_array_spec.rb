@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PaginatableArray do
+describe PaginableArray do
   describe 'simple init' do
     before do
-      @arr = PaginatableArray.new([1,2,3,4,5,6])
+      @arr = PaginableArray.new([1,2,3,4,5,6])
     end
 
     subject { @arr }
@@ -21,7 +21,7 @@ describe PaginatableArray do
         current_page: 12,
         total_count: 800
       }
-      @arr = PaginatableArray.new([1,2,3,4,5,6], options)
+      @arr = PaginableArray.new([1,2,3,4,5,6], options)
     end
 
     subject { @arr }

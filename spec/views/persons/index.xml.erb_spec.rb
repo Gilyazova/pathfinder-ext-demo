@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "persons/index.xml.erb" do
   before do
-    @persons = PaginatableArray.new([FactoryGirl.create(:person)])
+    @persons = PaginableArray.new([FactoryGirl.create(:person)])
     # FactoryGirl.create(:russian_passport, :person => person)
   end
 

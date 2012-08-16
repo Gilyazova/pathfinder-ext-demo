@@ -1,4 +1,4 @@
-class PaginatableArray < Array
+class PaginableArray < Array
   def initialize(original_array = [], options = {})
     @_original_array = original_array
     @_current_page = options[:current_page]
@@ -9,17 +9,14 @@ class PaginatableArray < Array
   end
 
   def total_count
-    return @_total_count unless @_total_count.nil?
-    @_original_array.count
+    @_total_count || @_original_array.count
   end
 
   def num_pages
-    return @_num_pages unless @_num_pages.nil?
-    1
+    @_num_pages || 1
   end
 
   def current_page
-    return @_current_page unless @_current_page.nil?
-    1
+    @_current_page || 1
   end
 end

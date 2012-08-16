@@ -6,38 +6,6 @@
     <total_objects><%= @identity_cards.total_count %></total_objects>
   </pages>
   <% @identity_cards.each do |ic| -%>
-    <% ic_name = ic.extended_by.class.name.underscore %>
-    <<%= ic_name %>>
-      <id><%= ic.extended_by.id %></id>
-
-      <type>
-        <code><%= ic.type_id %></code>
-        <title></title>
-      </type>
-
-      <number><%= ic.number %></number>
-      <serie><%= ic.serie %></serie>
-
-      <issue_date><%= ic.issue_date.strftime("%Y-%m-%d") %></issue_date>
-      <issuer_code><%= ic.issuer_code %></issuer_code>
-      <issuer><%= ic.issuer %></issuer>
-
-      <region>
-        <code><%= ic.issue_place_code %></code>
-        <title></title>
-      </region>
-
-      <reason>
-          <code><%= ic.reason_id %></code>
-          <title></title>
-      </reason>
-
-      <state>
-        <code><%= ic.state_id %></code>
-        <title></title>
-      </state>
-
-      <%= render_cell ic_name, :show, ic, ic.extended_by %>
-    </<%= ic_name %>>
+    <%= render_cell :identity_card, :show, ic %>
   <% end -%>
 </identity_cards>
