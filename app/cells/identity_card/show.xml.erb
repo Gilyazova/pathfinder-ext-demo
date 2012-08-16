@@ -1,0 +1,27 @@
+<type>
+  <code><%= @identity_card.type_id %></code>
+  <title></title>
+</type>
+
+<number><%= @identity_card.number %></number>
+<serie><%= @identity_card.serie %></serie>
+
+<issue_date><%= @identity_card.issue_date.strftime("%Y-%m-%d") %></issue_date>
+<issuer_code><%= @identity_card.issuer_code %></issuer_code>
+<issuer><%= @identity_card.issuer %></issuer>
+
+<region>
+  <code><%= @identity_card.issue_place_code %></code>
+  <title></title>
+</region>
+
+<reason>
+    <code><%= @identity_card.reason_id %></code>
+    <title></title>
+</reason>
+
+<state>
+  <code><%= @identity_card.state_id %></code>
+  <title></title>
+</state>
+ 

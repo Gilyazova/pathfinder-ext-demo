@@ -1,0 +1,16 @@
+<russian_passport>
+  <id><%= @russian_passport.id %></id>
+
+  <%= render_cell :identity_card, :show, @russian_passport.identity_card %>
+
+  <first_name><%= @russian_passport.first_name %></first_name>
+  <last_name><%= @russian_passport.last_name %></last_name>
+  <middle_name><%= @russian_passport.middle_name %></middle_name>
+  <sex>
+    <code><%= @russian_passport.sex_id %></code>
+  </sex>
+  <birth_place>
+    <code><%= @russian_passport.birth_place_code %></code>
+  </birth_place>
+
+</russian_passport>

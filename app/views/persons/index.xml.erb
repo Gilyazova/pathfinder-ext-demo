@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<persons>
+  <pages>
+    <current_page><%= @persons.current_page %></current_page>
+    <total_pages><%= @persons.num_pages %></total_pages>
+    <total_objects><%= @persons.total_count %></total_objects>
+  </pages>
+  <% @persons.each do |p| -%>
+  <%= render_cell :person, :show, :person => p %>
+  <% end -%>
+</persons>

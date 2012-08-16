@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<identity_cards>
+  <pages>
+    <current_page><%= @identity_cards.current_page %></current_page>
+    <total_pages><%= @identity_cards.num_pages %></total_pages>
+    <total_objects><%= @identity_cards.total_count %></total_objects>
+  </pages>
+  <% @identity_cards.each do |ic| -%>
+    <%= render_cell ic.identity_card_name, :show, ic.extended_by %>
+  <% end -%>
+</identity_cards>
