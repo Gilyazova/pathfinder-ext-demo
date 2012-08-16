@@ -6,6 +6,6 @@
     <total_objects><%= @identity_cards.total_count %></total_objects>
   </pages>
   <% @identity_cards.each do |ic| -%>
-    <%= render_cell :identity_card, :show, ic %>
+    <%= render_cell ic.identity_card_name, :show, ic.extended_by %>
   <% end -%>
 </identity_cards>

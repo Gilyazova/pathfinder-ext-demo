@@ -22,4 +22,8 @@ class IdentityCard < ActiveRecord::Base
   # Код региона выдачи
   #
   attr_accessible :issue_place_code
+
+  def identity_card_name
+    self.extended_by.class.name.underscore
+  end
 end
