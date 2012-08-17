@@ -1,0 +1,17 @@
+<foreign_passport>
+  <id><%= @foreign_passport.id %></id>
+
+  <%= render_cell :identity_card, :show, @foreign_passport.identity_card %>
+
+  <first_name><%= @foreign_passport.first_name %></first_name>
+  <last_name><%= @foreign_passport.last_name %></last_name>
+  <middle_name><%= @foreign_passport.middle_name %></middle_name>
+
+  <first_name_latin><%= @foreign_passport.first_name_latin %></first_name_latin>
+  <last_name_latin><%= @foreign_passport.last_name_latin %></last_name_latin>
+
+  <birth_place>
+    <code><%= @foreign_passport.birth_place_code %></code>
+  </birth_place>
+
+</foreign_passport>

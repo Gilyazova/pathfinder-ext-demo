@@ -41,6 +41,7 @@ gem 'puma'
 
 gem 'kaminari'
 gem 'cells'
+gem 'russian'
 # Deploy with Capistrano
 # gem 'capistrano'
 

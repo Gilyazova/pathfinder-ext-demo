@@ -1,5 +1,5 @@
 class Query
-  MAX_PAGE_SIZE = 10
+  # MAX_PAGE_SIZE = 10
 
   def initialize(base_query)
     @base_query = base_query
@@ -14,16 +14,21 @@ class Query
     end
   end
 
-  def generate(page = nil)
+  def generate
     query = @base_query
     conditions.each{ |k, v| query = query.where(k, v) }
 
     query = query.where("1 = ?", -1) if conditions.empty?
 
-    query.page(page).per(MAX_PAGE_SIZE)
+    query
+    # query.page(page).per(MAX_PAGE_SIZE)
   end
 
-  private
+  def empty?
+    conditions.empty?
+  end
+
+  # private
 
   def conditions
     @conditions ||= Hash.new

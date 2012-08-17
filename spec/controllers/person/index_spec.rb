@@ -134,4 +134,31 @@ describe PersonsController do
     end
 
   end
+
+
+  context "test for foreign passport" do
+    before do
+      @persons = []
+      3.times do |i|
+        person = FactoryGirl.create(:person)
+        @persons << person
+        FactoryGirl.create(:foreign_passport, :person => person)
+      end
+    end
+
+    describe 'should return one unique persons' do
+      let(:person) { @persons[0] }
+      before  do
+        passport = person.identity_cards[0].extended_by
+        get :index, first_name: passport.first_name, last_name: passport.last_name
+      end
+
+      # its (:status) {should == 200}
+
+      it 'should return persons' do
+        assigns(:persons).should == [@persons[0]]
+      end
+    end
+  end
+
 end

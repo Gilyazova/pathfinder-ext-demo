@@ -1,9 +1,10 @@
 class PersonsController < ApplicationController
   before_filter :find_person, :only => [:show]
-  before_filter :fetch_find_params, :only => [:index]
 
   def index
-    @persons = PersonFinderBy::IdentityCard.new.find(@find_parameters)
+    sp = PersonFinder::SearchParams.new(params)
+    @persons = PersonFinder::IdentityCard.new.find(sp)
+
     respond_to do |format|
       format.xml { render }
     end
@@ -22,12 +23,4 @@ class PersonsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     head(404)
   end
-
-  def fetch_find_params
-    @find_parameters = PersonFinderBy::IdentityCardParams.new(params)
-
-    head(404) unless @find_parameters.valid?
-  end
-
-
 end
