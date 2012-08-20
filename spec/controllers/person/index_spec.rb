@@ -136,13 +136,13 @@ describe PersonsController do
   end
 
 
-  context "test for foreign passport" do
+  context "test for international passport" do
     before do
       @persons = []
       3.times do |i|
         person = FactoryGirl.create(:person)
         @persons << person
-        FactoryGirl.create(:foreign_passport, :person => person)
+        FactoryGirl.create(:international_passport, :person => person)
       end
     end
 

@@ -49,6 +49,8 @@ gem 'russian'
 # gem 'debugger'
 
 group :test do
+  gem 'rspec-nokogiri', :git => "git://github.com/Imomoi/rspec-nokogiri.git"
+
   gem 'rb-readline'
   gem 'timecop'
   gem 'factory_girl'

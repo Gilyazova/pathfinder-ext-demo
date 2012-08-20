@@ -1,5 +1,5 @@
 module PersonFinder
-  class ForeignPassportQuery < IdentityCardQueryBase
+  class InternationalPassportQuery < IdentityCardQueryBase
 
     protected
 
@@ -14,7 +14,7 @@ module PersonFinder
     end
 
     def query
-      Query.new(ForeignPassport.joins(:identity_card))
+      Query.new(InternationalPassport.joins(:identity_card))
     end
 
     def pluck

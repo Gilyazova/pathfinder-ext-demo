@@ -36,38 +36,35 @@ describe "identity_cards/index.xml.erb" do
         @xml = Nokogiri::XML.parse(render)
       end
 
+      subject { Nokogiri::XML.parse(render).xpath('//identity_cards/russian_passport') }
+
       it 'should be rendered' do
         lambda { render }.should_not raise_error
-
-        @xml.xpath('//identity_cards/russian_passport/type/code').text.should == @type_id.to_s
-
-        @xml.xpath('//identity_cards/russian_passport/number').text.should == @number
-        @xml.xpath('//identity_cards/russian_passport/serie').text.should == @serie
-
-        @xml.xpath('//identity_cards/russian_passport/issue_date').text.should == @issue_date.strftime("%Y-%m-%d")
-        @xml.xpath('//identity_cards/russian_passport/issuer').text.should == @issuer
-        @xml.xpath('//identity_cards/russian_passport/issuer_code').text.should == @issuer_code
-
-        @xml.xpath('//identity_cards/russian_passport/region/code').text.should == @moscow_place_code
-
-        @xml.xpath('//identity_cards/russian_passport/reason/code').text.should == @reason_id.to_s
-        @xml.xpath('//identity_cards/russian_passport/state/code').text.should == @state_id.to_s
-
-
-        @xml.xpath('//identity_cards/russian_passport/sex/code').text.should == @sex_id.to_s
-        @xml.xpath('//identity_cards/russian_passport/birth_place/code').text.should == @moscow_place_code
       end
+
+      it { should have_tag('type/code').with_value(@type_id.to_s) }
+      it { should have_tag('number').with_value(@number) }
+      it { should have_tag('serie').with_value(@serie) }
+
+      it { should have_tag('issue_date').with_value(@issue_date.strftime("%Y-%m-%d")) }
+      it { should have_tag('issuer').with_value(@issuer) }
+      it { should have_tag('issuer_code').with_value(@issuer_code) }
+      it { should have_tag('region/code').with_value(@moscow_place_code) }
+
+      it { should have_tag('reason/code').with_value(@reason_id.to_s) }
+      it { should have_tag('state/code').with_value(@state_id.to_s) }
+      it { should have_tag('sex/code').with_value(@sex_id.to_s) }
+      it { should have_tag('birth_place/code').with_value(@moscow_place_code) }
     end
 
-
-    context 'foreign_passport' do
+    context 'international_passport' do
       before do
         
         I18n.locale = :ru
         @sex_id = 1
         @moscow_place_code = '770000000000'
         person = FactoryGirl.create(:person)
-        fp = FactoryGirl.create(:foreign_passport, birth_place_code: @moscow_place_code)
+        fp = FactoryGirl.create(:international_passport, birth_place_code: @moscow_place_code)
         @type_id = 2
         @number = '1111'
         @serie = '222222'
@@ -106,35 +103,34 @@ describe "identity_cards/index.xml.erb" do
         # fp.identity_card.save
         fp.save
         @identity_cards = PaginableArray.new(person.identity_cards)
-        @xml = Nokogiri::XML.parse(render)
       end
+
+      subject { Nokogiri::XML.parse(render).xpath('//identity_cards/international_passport') }
 
       it 'should be rendered' do
         lambda { render }.should_not raise_error
-
-        # @xml.xpath('//identity_cards/foreign_passport/first_name').text.should == @first_name
-        @xml.xpath('//identity_cards/foreign_passport/last_name').text.should == @last_name
-        @xml.xpath('//identity_cards/foreign_passport/middle_name').text.should == @middle_name
-        @xml.xpath('//identity_cards/foreign_passport/first_name_latin').text.should == @first_name_latin
-        @xml.xpath('//identity_cards/foreign_passport/last_name_latin').text.should == @last_name_latin
-
-        @xml.xpath('//identity_cards/foreign_passport/type/code').text.should == @type_id.to_s
-
-        @xml.xpath('//identity_cards/foreign_passport/number').text.should == @number
-        @xml.xpath('//identity_cards/foreign_passport/serie').text.should == @serie
-
-        @xml.xpath('//identity_cards/foreign_passport/issue_date').text.should == @issue_date.strftime("%Y-%m-%d")
-        @xml.xpath('//identity_cards/foreign_passport/issuer').text.should == @issuer
-        @xml.xpath('//identity_cards/foreign_passport/issuer_code').text.should == @issuer_code
-
-        @xml.xpath('//identity_cards/foreign_passport/region/code').text.should == @moscow_place_code
-
-        @xml.xpath('//identity_cards/foreign_passport/reason/code').text.should == @reason_id.to_s
-        @xml.xpath('//identity_cards/foreign_passport/state/code').text.should == @state_id.to_s
-
-        @xml.xpath('//identity_cards/foreign_passport/birth_place/code').text.should == @moscow_place_code
       end
+
+      # it { subject.at('last_name').text.should == @last_name }
+
+      it { should have_tag('first_name').with_value(@first_name) }
+      it { should have_tag('last_name').with_value(@last_name) }
+      it { should have_tag('middle_name').with_value(@middle_name) }
+      it { should have_tag('first_name_latin').with_value(@first_name_latin) }
+      it { should have_tag('last_name_latin').with_value(@last_name_latin) }
+
+      it { should have_tag('number').with_value(@number) }
+      it { should have_tag('serie').with_value(@serie) }
+      it { should have_tag('issue_date').with_value(@issue_date.strftime("%Y-%m-%d")) }
+      it { should have_tag('issuer').with_value(@issuer) }
+      it { should have_tag('issuer_code').with_value(@issuer_code) }
+
+      it { should have_tag('type/code').with_value(@type_id.to_s) }
+      it { should have_tag('region/code').with_value(@moscow_place_code) }
+
+      it { should have_tag('reason/code').with_value(@reason_id.to_s) }
+      it { should have_tag('state/code').with_value(@state_id.to_s) }
+      it { should have_tag('birth_place/code').with_value(@moscow_place_code) }
+
     end
-
-
 end

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Imomoi/rspec-nokogiri.git
+  revision: aff3178f7db2997d71ebdad91f50f682804735dc
+  specs:
+    rspec-nokogiri (0.1.0)
+      jeweler
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,6 +74,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.0.11)
     ffi (1.0.11-java)
+    git (1.2.5)
     guard (1.2.3)
       listen (>= 0.4.2)
       thor (>= 0.14.6)
@@ -78,6 +86,11 @@ GEM
     hike (1.2.1)
     i18n (0.6.0)
     jdbc-sqlite3 (3.7.2)
+    jeweler (1.8.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -213,6 +226,7 @@ DEPENDENCIES
   rails (= 3.2.6)
   rb-inotify
   rb-readline
+  rspec-nokogiri!
   rspec-rails
   russian
   sass-rails (~> 3.2.3)

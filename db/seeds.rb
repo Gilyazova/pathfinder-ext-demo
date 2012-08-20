@@ -46,7 +46,7 @@ def create_person(i, rnd)
 
   passport.save
 
-  f_passport = ForeignPassport.new(first_name: first_name,
+  f_passport = InternationalPassport.new(first_name: first_name,
     last_name: last_name,
     middle_name: middle_name,
     first_name_latin: I18n.transliterate(first_name),

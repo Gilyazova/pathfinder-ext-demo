@@ -30,7 +30,7 @@ module PersonFinder
     def finded
       person_ids = []
 
-      sources = [IdentityCardQuery, RussianPassportQuery, ForeignPassportQuery]
+      sources = [IdentityCardQuery, RussianPassportQuery, InternationalPassportQuery]
       sources.each do |src|
         person_ids << src.new.where(@_search_params.bare_params)
       end

@@ -1,4 +1,4 @@
-class ForeignPassport < ActiveRecord::Base
+class InternationalPassport < ActiveRecord::Base
   has_one :identity_card, :as => :extended_by, :dependent => :destroy
 
   attr_accessible :first_name, :last_name, :middle_name, :first_name_latin, :last_name_latin

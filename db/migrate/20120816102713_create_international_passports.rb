@@ -1,6 +1,6 @@
-class CreateForeignPassports < ActiveRecord::Migration
+class CreateInternationalPassports < ActiveRecord::Migration
   def change
-    create_table :foreign_passports do |t|
+    create_table :international_passports do |t|
       t.string :first_name, :length => 256
       t.string :last_name, :length => 256
       t.string :middle_name, :length => 256
