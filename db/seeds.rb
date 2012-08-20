@@ -17,13 +17,19 @@ def create_person(i, rnd)
   last_names = ['Иванов', 'Сидоров', 'Петров', 'Емельянов', 'Фрунзе', 'Толстов', 'Яковлев', 'Романов', 'Фролов']
   middle_names = ['Иванович', 'Михайлович', 'Виниаминович', 'Георгиевич', 'Тихонович', 'Петрович', 'Васильевич', 'Романович', 'Евгеньевич']
 
+  first_name = first_names[rnd.rand(first_names.size)]#.sample(random: rnd)#
+  last_name = last_names[rnd.rand(last_names.size)]#.sample(rnd)#
+  middle_name = middle_names[rnd.rand(middle_names.size)]#middle_names.sample(rnd)#
+  birth_date = DateTime.new(rnd.rand(1950..1996), rnd.rand(11) + 1, rnd.rand(27) + 1)
+  place_code = '770000000000'
+
   person = Person.create
-  passport = RussianPassport.new(first_name: first_names[rnd.rand(first_names.size)],
-      last_name: last_names[rnd.rand(last_names.size)],
-      middle_name: middle_names[rnd.rand(middle_names.size)],
-      birth_date: DateTime.new(rnd.rand(1950..1996), rnd.rand(11) + 1, rnd.rand(27) + 1),
+  passport = RussianPassport.new(first_name: first_name,
+      last_name: last_name,
+      middle_name: middle_name,
+      birth_date: birth_date,
       sex_id: 1,
-      birth_place_code: '770000000000')
+      birth_place_code: place_code)
 
   passport.build_identity_card(person: person,
     number: (PASSPORT_NUMBER + 1).to_s,
@@ -32,15 +38,39 @@ def create_person(i, rnd)
     issue_date: DateTime.new(2001, 5, 11),
     issuer_code: '12345',
     issuer: 'Организация выдающая паспорта РФ',
-    issue_place_code: '770000000000',
+    issue_place_code: place_code,
     reason_id: 2,
     state_id: 1,
     start_date: DateTime.new(2001, 5, 15)
   )
 
   passport.save
+
+  f_passport = InternationalPassport.new(first_name: first_name,
+    last_name: last_name,
+    middle_name: middle_name,
+    first_name_latin: I18n.transliterate(first_name),
+    last_name_latin: I18n.transliterate(last_name),
+    birth_date: birth_date,
+    birth_place_code: place_code
+  )
+
+  f_passport.build_identity_card(person: person,
+    number: (PASSPORT_NUMBER + 1).to_s,
+    serie: (PASSPORT_SERIE + 1).to_s,
+    type_id: 2,
+    issue_date: DateTime.new(2011, 5, 11),
+    issuer_code: '12345',
+    issuer: 'Организация выдающая заграничные паспорта РФ',
+    issue_place_code: place_code,
+    reason_id: 2,
+    state_id: 1,
+    start_date: DateTime.new(20011, 5, 15)
+  )
+  f_passport.save
 end
 
+I18n.locale = :ru
 rnd = Random.new(RANDOM_SEED)
 PERSON_COUNT.times { |i| create_person(i, rnd) }
 

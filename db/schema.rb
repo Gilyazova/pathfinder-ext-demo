@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807120324) do
+ActiveRecord::Schema.define(:version => 20120816102713) do
 
   create_table "authorization_grants", :force => true do |t|
     t.string   "code",                           :null => false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(:version => 20120807120324) do
   end
 
   add_index "authorization_grants", ["code"], :name => "index_authorization_grants_on_code", :unique => true
+
+  create_table "foreign_passports", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "first_name_latin"
+    t.string   "last_name_latin"
+    t.datetime "birth_date"
+    t.string   "birth_place_code"
+    t.integer  "citizenship_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "identity_cards", :force => true do |t|
     t.integer  "extended_by_id"
