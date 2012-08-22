@@ -8,9 +8,13 @@
   <middle_name><%= @russian_passport.middle_name %></middle_name>
   <sex>
     <code><%= @russian_passport.sex_id %></code>
+    <title></title>
   </sex>
-  <birth_place>
-    <code><%= @russian_passport.birth_place_code %></code>
-  </birth_place>
+  <birth_place><%= @russian_passport.birth_place %></birth_place>
+  <% if @russian_passport.birth_date.nil? -%>
+  <birth_date />
+  <% else %>
+  <birth_date><%= l @russian_passport.birth_date, :format => :xml %></birth_date>
+  <% end %>
 
 </russian_passport>

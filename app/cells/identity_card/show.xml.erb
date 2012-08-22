@@ -6,7 +6,7 @@
 <number><%= @identity_card.number %></number>
 <serie><%= @identity_card.serie %></serie>
 
-<issue_date><%= @identity_card.issue_date.strftime("%Y-%m-%d") %></issue_date>
+<issue_date><%= l @identity_card.issue_date, :format => :xml %></issue_date>
 <issuer_code><%= @identity_card.issuer_code %></issuer_code>
 <issuer><%= @identity_card.issuer %></issuer>
 

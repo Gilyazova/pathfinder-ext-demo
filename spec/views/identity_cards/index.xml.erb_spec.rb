@@ -8,8 +8,11 @@ describe "identity_cards/index.xml.erb" do
 
         @sex_id = 1
         @moscow_place_code = '770000000000'
+        @birth_place = "Место рождения Гражданина РФ"
+        @birth_date = DateTime.new(1950, 6, 7)
+
         person = FactoryGirl.create(:person)
-        rp = FactoryGirl.create(:russian_passport, :person => person, sex_id: @sex_id, birth_place_code: @moscow_place_code)
+        rp = FactoryGirl.create(:russian_passport, :person => person, sex_id: @sex_id, birth_place: @birth_place, birth_date: @birth_date)
         @type_id = 1
         @number = '1111'
         @serie = '222222'
@@ -54,7 +57,9 @@ describe "identity_cards/index.xml.erb" do
       it { should have_tag('reason/code').with_value(@reason_id.to_s) }
       it { should have_tag('state/code').with_value(@state_id.to_s) }
       it { should have_tag('sex/code').with_value(@sex_id.to_s) }
-      it { should have_tag('birth_place/code').with_value(@moscow_place_code) }
+      it { should have_tag('sex/title').with_value('') }
+      it { should have_tag('birth_place').with_value(@birth_place) }
+      it { should have_tag('birth_date').with_value(l(@birth_date, :format => :xml)) }
     end
 
     context 'international_passport' do
