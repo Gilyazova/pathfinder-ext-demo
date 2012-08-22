@@ -11,8 +11,8 @@ describe "identity_cards/index.xml.erb" do
         @birth_place = "Место рождения Гражданина РФ"
         @birth_date = DateTime.new(1950, 6, 7)
 
-        person = FactoryGirl.create(:person)
-        rp = FactoryGirl.create(:russian_passport, :person => person, sex_id: @sex_id, birth_place: @birth_place, birth_date: @birth_date)
+        @person = FactoryGirl.create(:person)
+        rp = FactoryGirl.create(:russian_passport, :person => @person, sex_id: @sex_id, birth_place: @birth_place, birth_date: @birth_date)
         @type_id = 1
         @number = '1111'
         @serie = '222222'
@@ -22,7 +22,7 @@ describe "identity_cards/index.xml.erb" do
         @reason_id = 2
         @state_id = 1
 
-        rp.build_identity_card(person: person,
+        rp.build_identity_card(person: @person,
             number: @number,
             serie: @serie,
             type_id: @type_id,
@@ -35,7 +35,7 @@ describe "identity_cards/index.xml.erb" do
         )
 
         rp.save
-        @identity_cards = PaginableArray.new(person.identity_cards)
+        @identity_cards = PaginableArray.new(@person.identity_cards)
         @xml = Nokogiri::XML.parse(render)
       end
 
@@ -45,6 +45,7 @@ describe "identity_cards/index.xml.erb" do
         lambda { render }.should_not raise_error
       end
 
+      it { should have_tag('person_id').with_value(@person.id.to_s) }
       it { should have_tag('type/code').with_value(@type_id.to_s) }
       it { should have_tag('number').with_value(@number) }
       it { should have_tag('serie').with_value(@serie) }
