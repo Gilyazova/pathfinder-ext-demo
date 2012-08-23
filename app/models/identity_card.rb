@@ -2,6 +2,11 @@ class IdentityCard < ActiveRecord::Base
   belongs_to :person, :touch => true
   belongs_to :extended_by, :polymorphic => true, :touch => true
 
+  has_one :declaration_issue
+  has_one :loss_issue
+
+  # source_identity_card
+
   attr_accessible :person
 
   attr_accessible :serie, :number
