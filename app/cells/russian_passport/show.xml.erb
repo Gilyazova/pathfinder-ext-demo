@@ -16,5 +16,30 @@
   <% else %>
   <birth_date><%= l @russian_passport.birth_date, :format => :xml %></birth_date>
   <% end %>
+  <%= @russian_passport.addreses.each do |addr| -%>
+  <address>
+    <type>
+      <code><%= addr.type_id %></code>
+    </type>
+    <uri><%= addr.uri %></uri>
+    <create_date><%= l addr.create_date, :format => :xml %></create_date>
+    <update_date><%= l addr.update_date, :format => :xml %></update_date>
+    <region>
+      <code><%= addr.region_id %></code>
+    </region>
+    <district>
+      <code><%= addr.district_id %></code>
+    </district>
+    <city>
+      <code><%= addr.city_id %></code>
+    </city>
+    <street>
+      <code><%= addr.street_id %></code>
+    </street>
+    <house><%= addr.house %></house>
+    <building><%= addr.building %></building>
+    <flat><%= addr.flat %></flat>
+  </address>
+  <% end -%>
 
 </russian_passport>

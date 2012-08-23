@@ -14,19 +14,20 @@
 ActiveRecord::Schema.define(:version => 20120820120449) do
 
   create_table "addresses", :force => true do |t|
+    t.integer  "russian_passport_id"
     t.string   "region_id"
+    t.string   "district_id"
     t.string   "city_id"
-    t.string   "place_id"
     t.string   "street_id"
     t.integer  "house"
     t.integer  "building"
     t.integer  "flat"
-    t.integer  "type"
+    t.integer  "type_id"
     t.string   "uri"
     t.datetime "create_date"
     t.datetime "update_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "authorization_grants", :force => true do |t|

@@ -1,6 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
+      t.references :russian_passport
       #
       # Регион (КЛАДР)
       #
@@ -8,11 +9,11 @@ class CreateAddresses < ActiveRecord::Migration
       #
       # Город или район (КЛАДР)
       #
-      t.string :city_id, :length => 12
+      t.string :district_id, :length => 12
       #
       # Населенный пункт (КЛАДР)
       #
-      t.string :place_id, :length => 12
+      t.string :city_id, :length => 12
       #
       # Улица (КЛАДР)
       #
@@ -23,7 +24,7 @@ class CreateAddresses < ActiveRecord::Migration
       #
       # Тип адреса
       #
-      t.integer :type
+      t.integer :type_id
       #
       # Источник
       #
