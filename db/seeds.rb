@@ -22,6 +22,7 @@ def create_person(i, rnd)
   middle_name = middle_names[rnd.rand(middle_names.size)]#middle_names.sample(rnd)#
   birth_date = DateTime.new(rnd.rand(1950..1996), rnd.rand(11) + 1, rnd.rand(27) + 1)
   place_code = '770000000000'
+  birth_place = 'Место рождения гражданина РФ'
 
   person = Person.create
   passport = RussianPassport.new(first_name: first_name,
@@ -29,7 +30,7 @@ def create_person(i, rnd)
       middle_name: middle_name,
       birth_date: birth_date,
       sex_id: 1,
-      birth_place_code: place_code)
+      birth_place: place_code)
 
   passport.build_identity_card(person: person,
     number: (PASSPORT_NUMBER + 1).to_s,

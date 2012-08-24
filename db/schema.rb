@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816102713) do
+ActiveRecord::Schema.define(:version => 20120823150051) do
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "region_id"
+    t.string   "district_id"
+    t.string   "city_id"
+    t.string   "street_id"
+    t.integer  "house"
+    t.integer  "building"
+    t.integer  "flat"
+    t.integer  "type_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "authorization_grants", :force => true do |t|
     t.string   "code",                           :null => false
@@ -23,17 +38,14 @@ ActiveRecord::Schema.define(:version => 20120816102713) do
 
   add_index "authorization_grants", ["code"], :name => "index_authorization_grants_on_code", :unique => true
 
-  create_table "foreign_passports", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "middle_name"
-    t.string   "first_name_latin"
-    t.string   "last_name_latin"
-    t.datetime "birth_date"
-    t.string   "birth_place_code"
-    t.integer  "citizenship_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+  create_table "declaration_issues", :force => true do |t|
+    t.integer  "identity_card_id"
+    t.integer  "source_identity_card_id"
+    t.string   "number"
+    t.datetime "date"
+    t.datetime "document_receive_date"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "identity_cards", :force => true do |t|
@@ -56,6 +68,30 @@ ActiveRecord::Schema.define(:version => 20120816102713) do
     t.integer  "person_id"
   end
 
+  create_table "international_passports", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "middle_name"
+    t.string   "first_name_latin"
+    t.string   "last_name_latin"
+    t.datetime "birth_date"
+    t.string   "birth_place_code"
+    t.integer  "citizenship_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "loss_issues", :force => true do |t|
+    t.integer  "identity_card_id"
+    t.datetime "loss_date"
+    t.datetime "issue_date"
+    t.string   "region_id"
+    t.string   "loss_info"
+    t.string   "issuer"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "people", :force => true do |t|
     t.integer  "nationality"
     t.datetime "created_at",  :null => false
@@ -67,10 +103,10 @@ ActiveRecord::Schema.define(:version => 20120816102713) do
     t.string   "last_name"
     t.string   "middle_name"
     t.datetime "birth_date"
-    t.string   "birth_place_code"
+    t.string   "birth_place"
     t.integer  "sex_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
