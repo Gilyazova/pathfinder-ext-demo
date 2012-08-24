@@ -1,0 +1,27 @@
+<address>
+  <type>
+    <code><%= @addr.type_id %></code>
+    <title></title>
+  </type>
+  <created_at><%= l @addr.created_at, :format => :xml %></created_at>
+  <updated_at><%= l @addr.updated_at, :format => :xml %></updated_at>
+  <region>
+    <code><%= @addr.region_id %></code>
+    <title></title>
+  </region>
+  <district>
+    <code><%= @addr.district_id %></code>
+    <title></title>
+  </district>
+  <city>
+    <code><%= @addr.city_id %></code>
+    <title></title>
+  </city>
+  <street>
+    <code><%= @addr.street_id %></code>
+    <title></title>
+  </street>
+  <house><%= @addr.house %></house>
+  <building><%= @addr.building %></building>
+  <flat><%= @addr.flat %></flat>
+</address>

@@ -35,9 +35,9 @@ describe "identity_cards/index.xml.erb" do
         )
         rp.save
 
-        @addr = FactoryGirl.create(:address, :russian_passport => rp)
+        @addr = FactoryGirl.create(:address, :owner => rp)
         @flat = 32.to_s
-        FactoryGirl.create(:address, :russian_passport => rp, :flat => @flat)
+        FactoryGirl.create(:address, :owner => rp, :flat => @flat)
 
         @identity_cards = PaginableArray.new(@person.identity_cards)
         @xml = Nokogiri::XML.parse(render)
@@ -67,12 +67,11 @@ describe "identity_cards/index.xml.erb" do
       it { should have_tag('birth_date').with_value(l(@birth_date, :format => :xml)) }
 
       context 'test address 1' do
-        subject { @xml.xpath('//identity_cards/russian_passport/address[1]') }
+        subject { @xml.xpath('//identity_cards/russian_passport/addresses/address[1]') }
 
         it { should have_tag('type/code').with_value(@addr.type_id) }
-        it { should have_tag('uri').with_value(@addr.uri) }
-        it { should have_tag('create_date').with_value(@addr.create_date.strftime("%Y-%m-%d")) }
-        it { should have_tag('update_date').with_value(@addr.update_date.strftime("%Y-%m-%d")) }
+        it { should have_tag('created_at').with_value(@addr.created_at.strftime("%Y-%m-%d")) }
+        it { should have_tag('updated_at').with_value(@addr.updated_at.strftime("%Y-%m-%d")) }
         it { should have_tag('region/code').with_value(@addr.region_id) }
         it { should have_tag('district/code').with_value(@addr.district_id) }
         it { should have_tag('city/code').with_value(@addr.city_id) }
@@ -82,7 +81,7 @@ describe "identity_cards/index.xml.erb" do
       end
 
       context 'test adderss 2' do
-        subject { @xml.xpath('//identity_cards/russian_passport/address[2]') }
+        subject { @xml.xpath('//identity_cards/russian_passport/addresses/address[2]') }
 
         it { should have_tag('flat').with_value(@flat) }
       end

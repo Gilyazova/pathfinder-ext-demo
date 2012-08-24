@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/Imomoi/rspec-nokogiri.git
-  revision: 5cb7f8a66e6c599a3d3971adb9fb5e474151f54f
+  remote: git://github.com/imomoisoft/rspec-nokogiri.git
+  revision: a5c702641d31d1959f9050013b7c3f2c8da595ca
   specs:
     rspec-nokogiri (0.1.0)
       jeweler

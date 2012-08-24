@@ -1,7 +1,8 @@
 class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
-      t.references :russian_passport
+      t.references :owner
+      t.string :owner_type
       #
       # Регион (КЛАДР)
       #
@@ -25,18 +26,6 @@ class CreateAddresses < ActiveRecord::Migration
       # Тип адреса
       #
       t.integer :type_id
-      #
-      # Источник
-      #
-      t.string :uri
-      #
-      # Дата создания
-      #
-      t.datetime :create_date
-      #
-      # Дата обновления
-      #
-      t.datetime :update_date
 
       t.timestamps
     end
