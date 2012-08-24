@@ -7,7 +7,7 @@ class CreateIdentityCards < ActiveRecord::Migration
       t.string :serie
       t.string :number
 
-      t.datetime :issue_date
+      t.date :issue_date
       t.string :issuer_code
       t.string  :issuer
 
@@ -25,5 +25,11 @@ class CreateIdentityCards < ActiveRecord::Migration
 
       t.references :person
     end
+
+    add_index :identity_cards, :extended_by_id
+    add_index :identity_cards, :extended_by_type
+    add_index :identity_cards, :person_id
+    add_index :identity_cards, :serie
+    add_index :identity_cards, :number
   end
 end

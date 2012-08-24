@@ -19,5 +19,7 @@ class CreateDeclarationIssues < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :declaration_issues, :identity_card_id
   end
 end

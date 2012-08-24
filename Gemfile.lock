@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/imomoisoft/rack-auto_indent.git
+  revision: 218842c6f5410f71bbd3f60e5479ecfe585c5648
+  specs:
+    rack-auto_indent (0.1.0)
+
+GIT
   remote: git://github.com/imomoisoft/rspec-nokogiri.git
   revision: a5c702641d31d1959f9050013b7c3f2c8da595ca
   specs:
@@ -223,6 +229,7 @@ DEPENDENCIES
   kaminari
   libnotify
   puma
+  rack-auto_indent!
   rails (= 3.2.6)
   rb-inotify
   rb-readline

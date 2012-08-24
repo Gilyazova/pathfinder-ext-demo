@@ -1,6 +1,7 @@
 $stdout.sync = true
 
 OauthDemo::Application.configure do
+  config.middleware.use Rack::AutoIndent
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

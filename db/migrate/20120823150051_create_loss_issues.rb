@@ -11,5 +11,7 @@ class CreateLossIssues < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :loss_issues, :identity_card_id
   end
 end

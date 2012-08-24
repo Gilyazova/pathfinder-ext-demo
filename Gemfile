@@ -31,6 +31,8 @@ gem 'jquery-rails'
 
 gem 'rspec-rails', :group => [:test, :development]
 
+gem 'rack-auto_indent', :git => "git://github.com/imomoisoft/rack-auto_indent.git", :group => [:test, :development]
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
