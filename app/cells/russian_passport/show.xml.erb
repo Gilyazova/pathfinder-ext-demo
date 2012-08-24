@@ -17,9 +17,8 @@
   <birth_date><%= l @russian_passport.birth_date, :format => :xml %></birth_date>
   <% end %>
   <addresses>
-  <%= @russian_passport.addresses.each do |addr| -%>
-    <%= render_cell :address, :show, addr %>  
+  <% @russian_passport.addresses.each do |addr| -%>
+    <%= render_cell :address, :show, addr %>
   <% end -%>
   </addresses>
-
 </russian_passport>
