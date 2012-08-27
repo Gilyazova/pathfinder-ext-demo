@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823150051) do
+ActiveRecord::Schema.define(:version => 20120824114505) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "owner_id"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(:version => 20120823150051) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "addresses", ["owner_id"], :name => "index_addresses_on_owner_id"
+  add_index "addresses", ["owner_type"], :name => "index_addresses_on_owner_type"
 
   create_table "authorization_grants", :force => true do |t|
     t.string   "code",                           :null => false
@@ -48,12 +51,14 @@ ActiveRecord::Schema.define(:version => 20120823150051) do
     t.datetime "updated_at",              :null => false
   end
 
+  add_index "declaration_issues", ["identity_card_id"], :name => "index_declaration_issues_on_identity_card_id"
+
   create_table "identity_cards", :force => true do |t|
     t.integer  "extended_by_id"
     t.string   "extended_by_type"
     t.string   "serie"
     t.string   "number"
-    t.datetime "issue_date"
+    t.date     "issue_date"
     t.string   "issuer_code"
     t.string   "issuer"
     t.string   "issue_place_code"
@@ -67,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20120823150051) do
     t.datetime "updated_at",       :null => false
     t.integer  "person_id"
   end
+
+  add_index "identity_cards", ["extended_by_id"], :name => "index_identity_cards_on_extended_by_id"
+  add_index "identity_cards", ["extended_by_type"], :name => "index_identity_cards_on_extended_by_type"
+  add_index "identity_cards", ["number"], :name => "index_identity_cards_on_number"
+  add_index "identity_cards", ["person_id"], :name => "index_identity_cards_on_person_id"
+  add_index "identity_cards", ["serie"], :name => "index_identity_cards_on_serie"
 
   create_table "international_passports", :force => true do |t|
     t.string   "first_name"
@@ -92,8 +103,17 @@ ActiveRecord::Schema.define(:version => 20120823150051) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "loss_issues", ["identity_card_id"], :name => "index_loss_issues_on_identity_card_id"
+
   create_table "people", :force => true do |t|
-    t.integer  "nationality"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "person_relations", :force => true do |t|
+    t.integer  "type_id"
+    t.integer  "person_id"
+    t.integer  "children_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
