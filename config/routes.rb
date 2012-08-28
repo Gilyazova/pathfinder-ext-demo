@@ -61,5 +61,6 @@ OauthDemo::Application.routes.draw do
 
   resources :persons, :only => [:index, :show] do
     resources :identity_cards, :only => [:index]
+    resources :photos, :only => [:index]
   end
 end

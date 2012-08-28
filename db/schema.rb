@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824114505) do
+ActiveRecord::Schema.define(:version => 20120827105147) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "owner_id"
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(:version => 20120824114505) do
     t.integer  "type_id"
     t.integer  "person_id"
     t.integer  "children_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "person_id"
+    t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

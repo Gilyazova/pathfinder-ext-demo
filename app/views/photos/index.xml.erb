@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<photos>
+  <pages>
+    <current_page><%= @photos.current_page %></current_page>
+    <total_pages><%= @photos.num_pages %></total_pages>
+    <total_objects><%= @photos.total_count %></total_objects>
+  </pages>
+  <% @photos.each do |ph| -%>
+    <%= render_cell :photo, :show, ph %>
+  <% end -%>
+</photos>
