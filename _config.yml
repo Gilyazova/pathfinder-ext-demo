@@ -1,1 +1,3 @@
 baseurl: /pathfinder-ext-demo
+markdown: kramdown
+pygments: true
