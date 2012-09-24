@@ -1,1 +1,5 @@
 /_site/
+*.sublime-workspace
+/config/
+/db/
+/log/
