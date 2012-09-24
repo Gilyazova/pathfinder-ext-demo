@@ -3,4 +3,4 @@ layout: index
 title: Контакты
 ---
 
-На данный момент раздел заполняется.
+* [Ларионов Денис Александрович (dlarionov[A]sbas.ru)](mailto:dlarionov[A]sbas.ru)
