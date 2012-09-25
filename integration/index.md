@@ -18,7 +18,7 @@ title: Интеграция
 
 
 ## [Сервисы]({{site.baseurl}}/integration/service)
-
+...
 ## [Справочники]({{site.baseurl}}/integration/classifiers)
 
 ## [Модели]({{site.baseurl}}/integration/models)
